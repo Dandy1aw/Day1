@@ -19,14 +19,18 @@ public class Non_decreasing {
         }
     }
     public  static boolean checkPossibility(int[] nums) {
-        int cnt = 0;                                                                    //记录改变的次数
-        for(int i = 1; i < nums.length && cnt<=1 ; i++){
-            if(nums[i-1] > nums[i]){
-                cnt++;
-                if(i-2<0 || nums[i-2] <= nums[i])nums[i-1] = nums[i];                    //如果i是第一个数，或者i-2这个数小于i那么只要将 i-1改成i即可
-                else nums[i] = nums[i-1];                                                //如果i-2这个数大于i这个数那么必须修改是第i个数，
+        int count = 0;//定义一个计数
+        for(int i= 1;i<nums.length && count <=1;i++)//遍历修改  只要超过一次修改 就跳出循环，说明只可以修改一次。若两次就就是2
+        {
+            if(nums[i-1]>nums[i])//当出现一个需要修改的数时
+            {
+                count++; //计数加一
+                //判断
+                if(i-2<0||nums[i-2]<=nums[i]) nums[i-1]=nums[i];
+                else
+                    nums[i]=nums[i-1];
             }
         }
-        return cnt<=1;
+        return count<1;/*最后判断，count<1,就是说若修改2次 就不是非递减，一直到最后只修改了一次，那么就是非递减。*/
     }
 }
