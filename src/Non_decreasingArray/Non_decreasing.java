@@ -17,7 +17,6 @@ public class Non_decreasing {
         {
             System.out.print(num[i]);
         }
-
     }
     public  static boolean checkPossibility(int[] nums) {
         int cnt = 0;                                                                    //记录改变的次数
